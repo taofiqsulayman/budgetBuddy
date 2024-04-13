@@ -15,7 +15,7 @@ const TransactionsList = ({
     deleteTransaction,
 }: TransactionListProps) => {
     return (
-        <View>
+        <View style={{ gap: 10 }}>
             {transactions.map((transaction) => {
                 const category = categories.find(
                     (category) => category.id === transaction.category_id
