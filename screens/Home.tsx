@@ -15,6 +15,11 @@ const Home = () => {
             `SELECT * FROM Transactions ORDER BY date DESC;`
         );
         setTransactions(transactionsResult);
+
+        const categoriesResult = await db.getAllAsync<Category>(
+            `SELECT * FROM Categories;`
+        );
+        setCategories(categoriesResult);
     };
 
     const deleteTransaction = async (id: number) => {
