@@ -17,6 +17,17 @@ const Home = () => {
         setTransactions(transactionsResult);
     };
 
+    const deleteTransaction = async (id: number) => {
+        db.withTransactionAsync(async () => {
+            await db.runAsync(`DELETE FROM Transactions WHERE id = ?;`, [
+                id,
+            ]);
+            // Update the transactions list
+            await getData();
+        }
+        );
+    }
+
     useEffect(() => {
         db.withTransactionAsync(async () => {
             await getData();
@@ -29,9 +40,8 @@ const Home = () => {
         >
             <TransactionsList
                 transactions={transactions}
-                categories={categories} deleteTransaction={function (id: number): Promise<void> {
-                    throw new Error("Function not implemented.");
-                } }            />
+                categories={categories}
+                deleteTransaction={deleteTransaction}            />
         </ScrollView>
     );
 };
