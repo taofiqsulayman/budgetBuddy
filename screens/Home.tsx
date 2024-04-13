@@ -5,6 +5,7 @@ import { useSQLiteContext } from "expo-sqlite/next";
 import { getMonthStartEndUnixTimestamps } from "../utils";
 import TransactionsList from "../components/TransactionsList";
 import TransactionSummary from "../components/TransactionSummary";
+import AddTransaction from "../components/AddTransaction";
 
 const Home = () => {
     const [categories, setCategories] = useState<Category[]>([]);
@@ -52,6 +53,22 @@ const Home = () => {
         });
     };
 
+    const insertTransaction = async (transaction: Transaction) => {
+        db.withTransactionAsync(async () => {
+            await db.runAsync(
+                ` INSERT INTO Transactions (category_id, amount, date, description, type) VALUES (?, ?, ?, ?, ?); `,
+                [
+                    transaction.category_id,
+                    transaction.amount,
+                    transaction.date,
+                    transaction.description,
+                    transaction.type,
+                ]
+            );
+            await getData();
+        });
+    }
+
     useEffect(() => {
         db.withTransactionAsync(async () => {
             await getData();
@@ -62,6 +79,7 @@ const Home = () => {
         <ScrollView
             contentContainerStyle={{ padding: 15, paddingVertical: 170 }}
         >
+            <AddTransaction insertTransaction={insertTransaction} />
             <TransactionSummary
                 totalIncome={transactionsByMonth.totalIncome}
                 totalExpenses={transactionsByMonth.totalExpenses}

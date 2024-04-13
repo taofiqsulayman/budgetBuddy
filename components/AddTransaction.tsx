@@ -34,14 +34,6 @@ const AddTransaction = ({ insertTransaction }: AddTransactionProps) => {
     };
 
     const handleSave = async () => {
-        console.log({
-            amount: Number(amount),
-            description,
-            category_id: categoryId,
-            date: new Date().getTime() / 1000,
-            type: category as "Income" | "Expense",
-        });
-
         await insertTransaction({
             amount: Number(amount),
             description,
@@ -70,7 +62,7 @@ const AddTransaction = ({ insertTransaction }: AddTransactionProps) => {
                         <TextInput
                             placeholder="$Amount"
                             style={{
-                                fontSize: 12,
+                                fontSize: 16,
                                 marginBottom: 15,
                                 fontWeight: "bold",
                             }}
