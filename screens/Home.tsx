@@ -46,7 +46,8 @@ const Home = () => {
             <TransactionsList
                 transactions={transactions}
                 categories={categories}
-                deleteTransaction={deleteTransaction}            />
+                deleteTransaction={deleteTransaction} />
+            
         </ScrollView>
     );
 };

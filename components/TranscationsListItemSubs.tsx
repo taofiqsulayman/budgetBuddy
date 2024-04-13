@@ -59,9 +59,9 @@ export function Amount({
 }) {
     return (
         <View style={subComponentsStyles.row}>
-            <AntDesign name={iconName} size={18} color={color} />
+            <AntDesign name={iconName} size={16} color={color} />
             <AutoSizeText
-                fontSize={32}
+                fontSize={24}
                 mode={ResizeTextMode.max_lines}
                 numberOfLines={1}
                 style={[subComponentsStyles.amount, { maxWidth: "80%" }]}
@@ -74,8 +74,8 @@ export function Amount({
 
 const subComponentsStyles = StyleSheet.create({
     amount: {
-        fontSize: 32,
-        fontWeight: "800",
+        fontSize: 24,
+        fontWeight: "700",
     },
     row: {
         flexDirection: "row",
