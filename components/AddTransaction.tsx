@@ -113,6 +113,7 @@ const AddTransaction = ({ insertTransaction }: AddTransactionProps) => {
                         style={{
                             flexDirection: "row",
                             justifyContent: "space-around",
+                            paddingTop: 15,
                         }}
                     >
                         <Button

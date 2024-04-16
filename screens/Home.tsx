@@ -77,7 +77,7 @@ const Home = () => {
 
     return (
         <ScrollView
-            contentContainerStyle={{ padding: 15, paddingVertical: 170 }}
+            contentContainerStyle={{ padding: 15, paddingVertical: 15 }}
         >
             <AddTransaction insertTransaction={insertTransaction} />
             <TransactionSummary

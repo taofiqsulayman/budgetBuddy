@@ -58,7 +58,12 @@ export default function App() {
                             component={Home}
                             options={{
                                 headerTitle: "Budget Buddy",
-                                headerLargeTitle: true,
+                                headerStyle: {
+                                    height: 80, // or the height you want
+                                } as any,
+                                headerTitleStyle: {
+                                    fontSize: 24, // or the size you want
+                                },
                             }}
                         />
                     </Stack.Navigator>
